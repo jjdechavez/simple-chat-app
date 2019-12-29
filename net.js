@@ -13,9 +13,9 @@ net.createServer(socket => {
     if (chunk === null) return;
 
     socket.write(chunk)
-    // clients.forEach((sender) => {
-    //   sender.write(chunk);
-    // });
+    clients.forEach((sender) => {
+      sender.write(chunk);
+    });
   });
 
   socket.on('end', () => {
