@@ -4,7 +4,7 @@ const clients = [];
 
 net.createServer(socket => {
   socket.setEncoding('utf-8');
-  console.log('i got a new client');
+  console.log('i got a new client', socket);
 
   clients.push(socket);
 
@@ -12,7 +12,8 @@ net.createServer(socket => {
     const chunk = socket.read();
     if (chunk === null) return;
 
-    socket.write(chunk)
+    // socket.write(chunk)
+    console.log(chunk);
     clients.forEach((sender) => {
       sender.write(chunk);
     });
